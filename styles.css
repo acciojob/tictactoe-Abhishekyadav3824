@@ -29,7 +29,6 @@ input {
   font-size: 16px;
   border-radius: 6px;
   border: 1px solid #ccc;
-	background-clip:pink
 }
 
 button {
@@ -71,6 +70,10 @@ button:hover {
   font-weight: bold;
   border-radius: 8px;
   cursor: pointer;
+  background-color:pink;
+}
+.newcell{
+	background-color:purple;
 }
 
 .cell:hover {

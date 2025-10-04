@@ -1,4 +1,3 @@
-//your JS code here. If required.
 const playerInput = document.getElementById("player-input");
 const boardContainer = document.getElementById("game-board");
 const messageDiv = document.querySelector(".message");
@@ -37,7 +36,12 @@ cells.forEach((cell) => {
     board[index] = currentSymbol;
     cell.textContent = currentSymbol;
 
-    if (checkWinner()) {
+    const winnerCombo = checkWinner();
+    if (winnerCombo) {
+      // Highlight winning cells
+      winnerCombo.forEach(i => {
+        document.getElementById(i + 1).classList.add("newcell");
+      });
       messageDiv.textContent = `${currentPlayer}, congratulations you won!`;
       gameActive = false;
       return;
@@ -68,10 +72,11 @@ function checkWinner() {
     [2, 4, 6],
   ];
 
-  return winningCombos.some((combo) => {
+  for (let combo of winningCombos) {
     const [a, b, c] = combo;
-    return (
-      board[a] !== "" && board[a] === board[b] && board[a] === board[c]
-    );
-  });
+    if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+      return combo; // return the winning combo indices
+    }
+  }
+  return null;
 }
