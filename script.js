@@ -38,7 +38,6 @@ cells.forEach((cell) => {
 
     const winnerCombo = checkWinner();
     if (winnerCombo) {
-      // Highlight winning cells
       winnerCombo.forEach(i => {
         document.getElementById(i + 1).classList.add("newcell");
       });
@@ -53,7 +52,6 @@ cells.forEach((cell) => {
       return;
     }
 
-    // Switch turns
     currentSymbol = currentSymbol === "X" ? "O" : "X";
     currentPlayer = currentPlayer === player1 ? player2 : player1;
     messageDiv.textContent = `${currentPlayer}, you're up!`;
@@ -75,7 +73,7 @@ function checkWinner() {
   for (let combo of winningCombos) {
     const [a, b, c] = combo;
     if (board[a] && board[a] === board[b] && board[a] === board[c]) {
-      return combo; // return the winning combo indices
+      return combo;
     }
   }
   return null;
